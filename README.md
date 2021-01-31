@@ -40,5 +40,5 @@ Open http://localhost:5000, log in as admin (the email is `admin@example.com` an
 - To update **FitTrackee**
 
 ```bash
-    $ make migrate update
+    $ make update migrate 
 ```
