@@ -24,6 +24,8 @@ services:
     links:
       - fittrackee-db
       - redis
+    volumes:
+      - fittrackee_upload:/uploads:rw
 
   redis:
     container_name: fittrackee-redis
@@ -31,3 +33,6 @@ services:
     hostname: redis
     ports:
       - 6379:6379
+
+volumes:
+  fittrackee_upload:
