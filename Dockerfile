@@ -17,5 +17,10 @@ RUN pip install fittrackee
 # create uploads folder
 CMD mkdir $UPLOAD_FOLDER
 
-# run fittrackee server
-CMD fittrackee
+ARG HOST
+ARG PORT
+ARG GUNICORN_TIMEOUT
+ARG GUNICORN_LOG
+
+# run fittrackee server w/ gunicorn
+CMD gunicorn -b $HOST:$PORT "fittrackee:create_app()" --error-logfile $GUNICORN_LOG --timeout $GUNICORN_TIMEOUT
