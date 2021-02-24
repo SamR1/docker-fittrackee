@@ -17,10 +17,13 @@ RUN pip install fittrackee
 # create uploads folder
 CMD mkdir $UPLOAD_FOLDER
 
+# environment variables
 ARG HOST
 ARG PORT
+ARG APP_WORKERS
 ARG GUNICORN_TIMEOUT
 ARG GUNICORN_LOG
+ARG GUNICORN_THREADS
 
 # run fittrackee server w/ gunicorn
-CMD gunicorn -b $HOST:$PORT "fittrackee:create_app()" --error-logfile $GUNICORN_LOG --timeout $GUNICORN_TIMEOUT
+CMD gunicorn -b $HOST:$PORT "fittrackee:create_app()" --error-logfile $GUNICORN_LOG --timeout $GUNICORN_TIMEOUT --workers=$APP_WORKERS --threads=$GUNICORN_THREADS --worker-class=gthread
