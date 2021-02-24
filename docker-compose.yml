@@ -5,11 +5,9 @@ services:
   fittrackee-db:
     container_name: fittrackee-db
     build: ./db
-    ports:
-      - 5435:5432
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+    env_file:
+      - .env
+
 
   fittrackee:
     container_name: fittrackee
