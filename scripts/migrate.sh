@@ -4,4 +4,4 @@ cd /usr/src/app
 
 source .env
 
-fittrackee_upgrade_db
+.venv/bin/fittrackee_upgrade_db

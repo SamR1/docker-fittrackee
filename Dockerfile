@@ -11,11 +11,13 @@ COPY scripts/ /usr/src/app/scripts
 COPY .env /usr/src/app
 
 # install fittrackee from pip
-RUN pip install --upgrade pip
-RUN pip install fittrackee
+ENV VIRTUAL_ENV=/usr/src/app/.venv
+RUN python3 -m venv $VIRTUAL_ENV
+RUN $VIRTUAL_ENV/bin/pip install --upgrade pip setuptools wheel
+RUN $VIRTUAL_ENV/bin/pip install fittrackee
 
 # create uploads folder
-CMD mkdir $UPLOAD_FOLDER
+CMD mkdir -p $UPLOAD_FOLDER
 
 # environment variables
 ARG HOST
@@ -26,4 +28,4 @@ ARG GUNICORN_LOG
 ARG GUNICORN_THREADS
 
 # run fittrackee server w/ gunicorn
-CMD gunicorn -b $HOST:$PORT "fittrackee:create_app()" --error-logfile $GUNICORN_LOG --timeout $GUNICORN_TIMEOUT --workers=$APP_WORKERS --threads=$GUNICORN_THREADS --worker-class=gthread
+CMD $VIRTUAL_ENV/bin/gunicorn -b $HOST:$PORT "fittrackee:create_app()" --error-logfile $GUNICORN_LOG --timeout $GUNICORN_TIMEOUT --workers=$APP_WORKERS --threads=$GUNICORN_THREADS --worker-class=gthread
