@@ -4,4 +4,4 @@ cd /usr/src/app
 
 source .env
 
-fittrackee_worker --processes $WORKERS_PROCESSES
+.venv/bin/fittrackee_worker --processes $WORKERS_PROCESSES

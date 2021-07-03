@@ -4,4 +4,4 @@ cd /usr/src/app
 
 source .env
 
-fittrackee_init_data
+.venv/bin/fittrackee_init_data

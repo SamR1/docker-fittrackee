@@ -4,4 +4,4 @@ cd /usr/src/app
 
 source .env
 
-pip install -U fittrackee
+.venv/bin/pip install -U fittrackee
