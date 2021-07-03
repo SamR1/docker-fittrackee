@@ -20,12 +20,10 @@ RUN $VIRTUAL_ENV/bin/pip install fittrackee
 CMD mkdir -p $UPLOAD_FOLDER
 
 # environment variables
-ARG HOST
-ARG PORT
 ARG APP_WORKERS
 ARG GUNICORN_TIMEOUT
 ARG GUNICORN_LOG
 ARG GUNICORN_THREADS
 
 # run fittrackee server w/ gunicorn
-CMD $VIRTUAL_ENV/bin/gunicorn -b $HOST:$PORT "fittrackee:create_app()" --error-logfile $GUNICORN_LOG --timeout $GUNICORN_TIMEOUT --workers=$APP_WORKERS --threads=$GUNICORN_THREADS --worker-class=gthread
+CMD $VIRTUAL_ENV/bin/gunicorn -b 0.0.0.0:5000 "fittrackee:create_app()" --error-logfile $GUNICORN_LOG --timeout $GUNICORN_TIMEOUT --workers=$APP_WORKERS --threads=$GUNICORN_THREADS --worker-class=gthread
