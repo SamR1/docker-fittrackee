@@ -24,6 +24,9 @@ services:
       - redis
     volumes:
       - fittrackee_upload:/uploads:rw
+      - type: bind
+        source: $FITTRACKEE_LOG_DIR
+        target: /logs
 
   redis:
     container_name: fittrackee-redis

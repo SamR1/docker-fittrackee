@@ -13,6 +13,7 @@ Docker sample to install FitTrackee
   $ cd docker-fittrackee
   $ $EDITOR db/create.sql  # update fittrackee password
   $ cp .env.example .env
+  $ mkdir [FITTRACKEE_LOG_DIR]  # create a directory to store fittrackee logs
   $ $EDITOR .env  # update environment variables (see Documentation)
   $ make build run init
 ```
