@@ -11,7 +11,7 @@ Docker sample to install FitTrackee
 ```shell
   $ git clone https://github.com/SamR1/docker-fittrackee.git
   $ cd docker-fittrackee
-  $ $EDITOR db/create.sql  # update fittrackee password
+  $ $EDITOR db/create.sql  # update fittrackee user password
   $ cp .env.example .env
   $ mkdir [FITTRACKEE_LOG_DIR]  # create a directory to store fittrackee logs
   $ $EDITOR .env  # update environment variables (see Documentation)
@@ -43,3 +43,7 @@ Open http://localhost:5000, log in as admin (the email is `admin@example.com` an
 ```bash
     $ make update migrate 
 ```
+
+Notes:
+- **Important**: all uncommented variables present in .env must be initialized. Otherwise the application may not start.
+- If you just want to evaluate **FitTrackee**, ready to use docker files are available in **FitTrackee** repository (see [Documentation](https://samr1.github.io/FitTrackee/installation.html#docker)).
