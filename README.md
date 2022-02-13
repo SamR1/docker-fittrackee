@@ -18,7 +18,13 @@ Docker sample to install FitTrackee
   $ make build run init
 ```
 
-Open http://localhost:5000, log in as admin (the email is `admin@example.com` and the password `mpwoadmin`) and update password.
+Open http://localhost:5000 and register.
+
+- To set admin rights to the newly created account, use the following command:
+
+```bash
+   $ make set-admin USERNAME=<username>
+```
 
 - To stop **Fittrackee**:
 
