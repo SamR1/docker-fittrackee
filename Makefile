@@ -4,10 +4,7 @@
 build:
 	docker-compose build
 
-init: migrate init-db restart run-workers
-
-init-db:
-	docker-compose exec fittrackee scripts/init-database.sh
+init: migrate restart run-workers
 
 logs:
 	docker-compose logs --follow
@@ -32,6 +29,9 @@ run-workers:
 
 shell:
 	docker-compose exec fittrackee scripts/shell.sh
+
+set-admin:
+	docker-compose exec fittrackee scripts/set-admin.sh $(USERNAME)
 
 stop:
 	docker-compose stop
