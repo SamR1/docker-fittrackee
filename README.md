@@ -4,7 +4,7 @@ Docker sample to install FitTrackee
 
 ---
 
-[FitTrackee](https://samr1.github.io/FitTrackee/) is a self-hostable application, allowing you to track your outdoor activities (workouts) from gpx files and keep your data on your own server.
+[FitTrackee](https://samr1.github.io/FitTrackee/) is a self-hosted application, allowing you to track your outdoor activities (workouts) from gpx files and keep your data on your own server.
 
 - To install **FitTrackee** with database initialisation and run the application and dramatiq workers:
 
@@ -51,5 +51,5 @@ Open http://localhost:5000 and register.
 ```
 
 Notes:
-- **Important**: all uncommented variables present in .env must be initialized. Otherwise the application may not start.
+- **Important**: all uncommented variables present in .env should be initialized. Otherwise, the application may not start.
 - If you just want to evaluate **FitTrackee**, ready to use docker files are available in **FitTrackee** repository (see [Documentation](https://samr1.github.io/FitTrackee/installation.html#docker)).

@@ -4,4 +4,4 @@ cd /usr/src/app
 
 source .env
 
-.venv/bin/fittrackee_set_admin $1
+.venv/bin/ftcli users update $1 --set-admin true
