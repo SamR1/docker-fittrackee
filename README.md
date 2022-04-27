@@ -21,6 +21,7 @@ Docker sample to install FitTrackee
 Open http://localhost:5000 and register.
 
 - To set admin rights to the newly created account, use the following command:
+  **Note**: it also activates account.
 
 ```bash
    $ make set-admin USERNAME=<username>
@@ -32,17 +33,19 @@ Open http://localhost:5000 and register.
     $ make stop
 ```
 
-- To start **Fittrackee** (application and dramatiq workers):
+- To start **Fittrackee**:
+
+```bash
+    $ make run
+```
+
+- To start **Fittrackee** application and dramatiq workers (with Redis):
 
 ```bash
     $ make run-all
 ```
 
-- To run shell inside **Fittrackee** container:
-
-```bash
-    $ make shell
-```
+  **Warning**: `EMAIL_URL` must be initialized to send emails.
 
 - To update **FitTrackee**
 
@@ -50,6 +53,13 @@ Open http://localhost:5000 and register.
     $ make update migrate 
 ```
 
+- To run shell inside **Fittrackee** container (with virtualenv):
+
+```bash
+    $ make shell
+```
+
+
 Notes:
-- **Important**: all uncommented variables present in .env should be initialized. Otherwise, the application may not start.
+- **Important**: all uncommented variables present in .env must be initialized. Otherwise, the application may not start.
 - If you just want to evaluate **FitTrackee**, ready to use docker files are available in **FitTrackee** repository (see [Documentation](https://samr1.github.io/FitTrackee/installation.html#docker)).
