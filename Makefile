@@ -15,14 +15,16 @@ migrate:
 rebuild:
 	docker-compose build --no-cache
 
+redis:
+	docker-compose up -d redis
+
 restart:
-	# Restart fittrackee
 	docker-compose restart fittrackee
 
-run-all: run run-workers
+run-all: redis run run-workers
 
 run:
-	docker-compose up -d
+	docker-compose up -d fittrackee
 
 run-workers:
 	docker-compose exec -d fittrackee scripts/run-workers.sh
@@ -34,7 +36,8 @@ set-admin:
 	docker-compose exec fittrackee scripts/set-admin.sh $(USERNAME)
 
 stop:
-	docker-compose stop
+	docker-compose stop fittrackee fittrackee-db
+	docker-compose stop redis
 
 up:
 	docker-compose up
