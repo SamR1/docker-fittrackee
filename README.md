@@ -33,19 +33,19 @@ Open http://localhost:5000 and register.
     $ make stop
 ```
 
-- To start **Fittrackee**:
+- To start **Fittrackee** application:
 
 ```bash
     $ make run
 ```
 
-- To start **Fittrackee** application and dramatiq workers (with Redis):
+- To start **Fittrackee** application and dramatiq workers (with Redis) in order to send emails:
 
 ```bash
     $ make run-all
 ```
 
-  **Warning**: `EMAIL_URL` must be initialized to send emails.
+  **Warning**: `EMAIL_URL` must be initialized.
 
 - To update **FitTrackee**
 
@@ -61,5 +61,5 @@ Open http://localhost:5000 and register.
 
 
 Notes:
-- **Important**: all uncommented variables present in .env must be initialized. Otherwise, the application may not start.
+- **Important**: all uncommented [variables](https://samr1.github.io/FitTrackee/installation.html#environment-variables) present in .env must be initialized. Otherwise, the application may not start.
 - If you just want to evaluate **FitTrackee**, ready to use docker files are available in **FitTrackee** repository (see [Documentation](https://samr1.github.io/FitTrackee/installation.html#docker)).
