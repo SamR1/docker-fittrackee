@@ -4,7 +4,7 @@
 build:
 	docker-compose build
 
-init: migrate restart run-workers
+init: migrate restart
 
 logs:
 	docker-compose logs --follow
@@ -21,12 +21,12 @@ redis:
 restart:
 	docker-compose restart fittrackee
 
-run-all: redis run run-workers
+run-all: run run-workers
 
 run:
 	docker-compose up -d fittrackee
 
-run-workers:
+run-workers: redis
 	docker-compose exec -d fittrackee scripts/run-workers.sh
 
 shell:
