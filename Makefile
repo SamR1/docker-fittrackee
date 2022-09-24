@@ -4,7 +4,7 @@
 build:
 	docker-compose build
 
-init: migrate restart run-workers
+init: migrate restart
 
 logs:
 	docker-compose logs --follow
