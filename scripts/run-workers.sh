@@ -4,4 +4,4 @@ cd /usr/src/app
 
 source .env
 
-.venv/bin/fittrackee_worker --processes $WORKERS_PROCESSES
+.venv/bin/flask worker --processes $WORKERS_PROCESSES
