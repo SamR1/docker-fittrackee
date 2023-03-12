@@ -4,7 +4,7 @@
 build:
 	docker-compose build
 
-init: migrate restart
+init: up migrate run
 
 logs:
 	docker-compose logs --follow
@@ -19,15 +19,19 @@ redis:
 	docker-compose up -d redis
 
 restart:
-	docker-compose restart fittrackee
+	docker-compose exec fittrackee supervisorctl restart fittrackee
 
-run-all: run run-workers
+run-all:
+	# start fittrackee web application and fittrackee workers
+	docker-compose exec fittrackee supervisorctl start all
 
-run:
-	docker-compose up -d fittrackee
+run: up
+	# start fittrackee web application
+	docker-compose exec fittrackee supervisorctl start fittrackee
 
-run-workers: redis
-	docker-compose exec -d fittrackee scripts/run-workers.sh
+run-workers: up redis
+	# start fittrackee workers
+	docker-compose exec fittrackee supervisorctl start fittrackee-workers
 
 shell:
 	docker-compose exec fittrackee scripts/shell.sh
@@ -39,8 +43,11 @@ stop:
 	docker-compose stop fittrackee fittrackee-db
 	docker-compose stop redis
 
+stop-all:
+	docker-compose exec fittrackee supervisorctl stop all
+
 up:
-	docker-compose up
+	docker-compose up -d
 
 update:
 	docker-compose exec fittrackee scripts/update-fittrackee.sh

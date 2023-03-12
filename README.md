@@ -15,7 +15,7 @@ Docker sample to install FitTrackee
   $ cp .env.example .env
   $ mkdir [FITTRACKEE_LOG_DIR]  # create a directory to store fittrackee logs
   $ $EDITOR .env  # update environment variables (see Documentation)
-  $ make build run init
+  $ make build up init
 ```
 
 With default configuration (no `EMAIL_URL` set), email sending is disabled.
@@ -29,10 +29,16 @@ With default configuration (no `EMAIL_URL` set), email sending is disabled.
    $ make set-admin USERNAME=<username>
 ```
 
-- To stop **Fittrackee**:
+- To stop docker containers:
 
 ```bash
     $ make stop
+```
+
+- To start docker containers:
+
+```bash
+    $ make up
 ```
 
 - To start **Fittrackee** application:
@@ -52,7 +58,9 @@ With default configuration (no `EMAIL_URL` set), email sending is disabled.
 - To update **FitTrackee**
 
 ```bash
+    $ make stop-all
     $ make update migrate 
+    $ make run-all  # after checking update and migration went well
 ```
 
 - To run shell inside **Fittrackee** container (with virtualenv):
