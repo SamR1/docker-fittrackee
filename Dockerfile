@@ -2,6 +2,8 @@ FROM python:3.9
 
 MAINTAINER SamR1@users.noreply.github.com
 
+RUN apt-get update && apt-get -y install supervisor
+
 # set working directory
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
@@ -9,6 +11,12 @@ WORKDIR /usr/src/app
 # copy needed files
 COPY scripts/ /usr/src/app/scripts
 COPY .env /usr/src/app
+COPY docker-entrypoint.sh /usr/src/app
+COPY supervisor/ /usr/src/app/supervisor
+
+RUN ln -s /usr/src/app/supervisor/fittrackee.supervisor.conf /etc/supervisor/conf.d/fittrackee.supervisor.conf
+RUN ln -s /usr/src/app/supervisor/fittrackee-workers.supervisor.conf /etc/supervisor/conf.d/fittrackee-workers.supervisor.conf
+
 
 # install fittrackee from pip
 ENV VIRTUAL_ENV=/usr/src/app/.venv
@@ -25,5 +33,5 @@ ARG GUNICORN_TIMEOUT
 ARG GUNICORN_LOG
 ARG GUNICORN_THREADS
 
-# run fittrackee server w/ gunicorn
-CMD $VIRTUAL_ENV/bin/gunicorn -b 0.0.0.0:5000 "fittrackee:create_app()" --error-logfile $GUNICORN_LOG --timeout $GUNICORN_TIMEOUT --workers=$APP_WORKERS --threads=$GUNICORN_THREADS --worker-class=gthread
+# run supervisor
+ENTRYPOINT ["/usr/src/app/docker-entrypoint.sh"]
