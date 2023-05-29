@@ -75,7 +75,7 @@ Notes:
 - If you just want to evaluate **FitTrackee**, ready to use docker files are available in **FitTrackee** repository (see [Documentation](https://samr1.github.io/FitTrackee/installation.html#docker)).
 
 Troubleshooting:
-- If installation or startup fails, check the environnement variables.  
+- If installation or startup fails, check the environment variables.  
 - The commands can be run separately when debugging, for instance:
 ```shell
 $ make build
