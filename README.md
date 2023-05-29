@@ -73,3 +73,15 @@ With default configuration (no `EMAIL_URL` set), email sending is disabled.
 Notes:
 - **Important**: all uncommented [variables](https://samr1.github.io/FitTrackee/installation.html#environment-variables) present in .env must be initialized. Otherwise, the application may not start.
 - If you just want to evaluate **FitTrackee**, ready to use docker files are available in **FitTrackee** repository (see [Documentation](https://samr1.github.io/FitTrackee/installation.html#docker)).
+
+Troubleshooting:
+- If installation or startup fails, check the environment variables.  
+- The commands can be run separately when debugging, for instance:
+```shell
+$ make build
+$ make up
+$ make migrate
+$ make run
+```
+
+`make up` can be replaced with `docker-compose up` (without `detach` option to prevent containers from running in background and to display some errors).
