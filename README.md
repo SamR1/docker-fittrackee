@@ -1,5 +1,8 @@
 # docker-fittrackee
 
+> [!WARNING]
+> This repository is no longer maintained. A docker image is now available, see FitTrackee [documentation](https://samr1.github.io/FitTrackee/en/installation.html) for more information.
+
 Docker sample to install FitTrackee
 
 ---
